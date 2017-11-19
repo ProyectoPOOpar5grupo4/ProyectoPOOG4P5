@@ -20,11 +20,11 @@ public class Estudiante extends Mago implements Volador {
 
     public int getMateria() {
         
-        return 0;
+        return Materia;
     }
 
     public void Registro( int Edad) {
-       
+       this.Edad=Edad;
     }
 
     public String VerHorarios() {
