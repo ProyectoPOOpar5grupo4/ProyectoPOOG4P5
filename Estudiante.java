@@ -20,7 +20,7 @@ public class Estudiante extends Mago implements Volador {
 
     public int getMateria() {
         
-        return Materia;
+        return MateriasReg;
     }
 
     public void Registro( int Edad) {
