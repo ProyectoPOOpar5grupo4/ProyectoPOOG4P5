@@ -48,5 +48,15 @@ public class Curso {
     public String getHora() {
         return Hora;
     }
+    
+    public boolean esExtraordionario(int edad) {
+        if (edad <= 15) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 
 }

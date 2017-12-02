@@ -16,11 +16,9 @@ public class Mago {
     public int Edad;
     public String Casa;
     public String Varita;
-    public TipoMago Tipo;
+    public Tipo_Mago Tipo;
     
-    public Mago(String Usuario, String Contraseña, String Nombres, String Apellidos, int Edad, String Casa, String Varita, TipoMago Tipo) {
-        this.Usuario = Usuario;
-        this.Contraseña = Contraseña;
+    public Mago(String Nombres, String Apellidos, int Edad, String Casa, String Varita, Tipo_Mago Tipo) {
         this.Nombres = Nombres;
         this.Apellidos = Apellidos;
         this.Edad = Edad;
@@ -34,4 +32,5 @@ public class Mago {
         return null;
     }
 
+    
 }

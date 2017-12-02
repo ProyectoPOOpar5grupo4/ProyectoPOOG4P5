@@ -7,16 +7,16 @@ import java.util.*;
  */
 public class Profesor extends Mago implements Volador {
 
-    private Date FIngreso;
+    private String FIngreso;
     private String Hechizo;
     private String Animal;
     private String Pocion;
     private String Deporte;
 
-    public Profesor(String Usuario, String Contraseña, String Nombres,String Apellidos, int Edad, String Casa,
-    String Varita, TipoMago Tipo,Date FIngreso,String Hechizo,String Animal,String Pocion,String Deporte) {
+    public Profesor(String Nombres,String Apellidos, int Edad, String Casa,
+    String Varita, Tipo_Mago Tipo,String FIngreso,String Hechizo,String Animal,String Pocion,String Deporte) {
 
-        super(Usuario, Contraseña, Nombres, Apellidos, Edad, Casa, Varita, Tipo);
+        super(Nombres, Apellidos, Edad, Casa, Varita, Tipo);
         this.FIngreso=FIngreso;
         this.Deporte=Deporte;
         this.Animal=Animal;
@@ -24,7 +24,7 @@ public class Profesor extends Mago implements Volador {
         this.Hechizo=Hechizo;
     }
 
-    public void setIngreso(Date FIngreso) {
+    public void setIngreso(String FIngreso) {
         this.FIngreso=FIngreso;
     }
 
@@ -44,7 +44,7 @@ public class Profesor extends Mago implements Volador {
         this.Pocion=Pocion;
     }
 
-    public Date getIngreso() {
+    public String getIngreso() {
         // TODO implement here
         return FIngreso;
     }
@@ -69,10 +69,12 @@ public class Profesor extends Mago implements Volador {
         return Pocion;
     }
 
+    @Override
     public void Despegar() {
     
     }
 
+    @Override
     public void Volar() {
     
     }
