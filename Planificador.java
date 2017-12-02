@@ -37,8 +37,51 @@ public class Planificador {
     }
 
     public void Login() {
+        Scanner sc = new Scanner(System.in);
+        String usernom = "", userapell = "", userrol = "";
+        int checknum = -1;
+        
+        while (checknum == -1) {
+            System.out.println("Usuario");
+            String usuario = sc.nextLine();
+            System.out.println("Contraseña");
+            String password = sc.nextLine();
+            File archivo = null;
+            FileReader fr = null;
+            BufferedReader br = null;
+            try {
+                InputStream inputstream = Planificador.class.getResourceAsStream("/resources/Usuarios.txt");
+                InputStreamReader inputreader = new InputStreamReader(inputstream);
+                br = new BufferedReader(inputreader);
+                String linea;
+                while ((linea = br.readLine()) != null) {
+                    String texto[] = linea.split(",");
+                    if (texto[0].equalsIgnoreCase(usuario) && texto[1].equalsIgnoreCase(password)) {
+                        checknum= 0;
+                        usernom = texto[2];
+                        userapell = texto[3];
+                        userrol = texto[4];
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
 
-    }
+            } finally {
+                try {
+                    if (null != fr) {
+                        fr.close();
+                    }
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+            }
+            if (checknum == -1) {
+                System.out.println("Los datos no son válidos.Intente nuevamente.");
+                } else {
+                System.out.println("Ingrese exitoso");
+            }
+        }
+    
 
     public String CrearCurso(String Materia, String Profesor) {
 
