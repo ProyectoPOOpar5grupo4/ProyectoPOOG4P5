@@ -1,8 +1,6 @@
 package proyecto;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.*;
 
 public class Planificador {
@@ -82,7 +80,7 @@ public class Planificador {
             }
         }
     
-
+    
     public String CrearCurso(String Materia, String Profesor) {
 
         return "";
@@ -133,10 +131,19 @@ public class Planificador {
                             System.out.println("Profesor creado");
                         } catch (IOException e) {
                             System.err.println(e);
+                        } 
+                    }else {
+                    try {
+                            pro.createNewFile();
+                            es = new PrintWriter(pro, "utf-8");
+                            es.println(lineaprofesor);
+                            es.close();
+                            System.out.println("Profesor creado");
+                        } catch (IOException e) {
+                            System.err.println("Archivo no existe" + e);
                         }
-
-                    }
-                } else {
+                }
+                }else {
                     System.out.println("Profesor no creado");
                 }
                 //DEBERIA GUARDARSE EN TXT
@@ -156,13 +163,21 @@ public class Planificador {
                             es = new PrintWriter(pro, "utf-8");
                             es.println(lineaprofesor);
                             es.close();
-                            System.out.println("Profesor creado");
                         } catch (IOException e) {
                             System.err.println(e);
+                        } 
+                    }else {
+                    try {
+                            pro.createNewFile();
+                            es = new PrintWriter(pro, "utf-8");
+                            es.println(lineaprofesor);
+                            es.close();
+                            System.out.println("Profesor creado");
+                        } catch (IOException e) {
+                            System.err.println("Archivo no existe" + e);
                         }
-
-                    }
-                } else {
+                }
+                }else {
                     System.out.println("Profesor no creado");
                 }
                 //DEBERIA GUARDARSE EN TXT
@@ -181,15 +196,29 @@ public class Planificador {
                             es = new PrintWriter(pro, "utf-8");
                             es.println(lineaprofesor);
                             es.close();
+                            System.out.println("Profesor creado");
                         } catch (IOException e) {
                             System.err.println(e);
+                        } 
+                    }else {
+                    try {
+                            pro.createNewFile();
+                            es = new PrintWriter(pro, "utf-8");
+                            es.println(lineaprofesor);
+                            es.close();
+                            System.out.println("Profesor creado");
+                        } catch (IOException e) {
+                            System.err.println("Archivo no existe" + e);
                         }
-
-                    }
-                } else {
+                }
+                }else {
                     System.out.println("Profesor no creado");
                 }
                 //DEBERIA GUARDARSE EN TXT                
+            }else if ((opcionbruja > 3) || (opcionbruja < 1)){
+                checkdigit = -1;
+                System.out.println("Selección erronea");
+
             }
         }
     }
@@ -208,8 +237,8 @@ public class Planificador {
         String casaest = sc.nextLine();
         System.out.println("Varita: ");
         String varitaest = sc.nextLine();
-        int checkdigit = 0;
-        while (checkdigit == 0) {
+        int checkdigit = -1;
+        while (checkdigit == -1) {
             System.out.println("Tipos de Brujas/Magos");
             System.out.println("1.- Animago");
             System.out.println("2.- Metamorfomago");
@@ -237,7 +266,11 @@ public class Planificador {
                     } else {
                         try {
                             est.createNewFile();
-                        } catch (Exception e) {
+                            es = new PrintWriter(est, "utf-8");
+                            es.println(lineaestudiante);
+                            System.out.println("Estudiante creado");
+                            es.close();
+                        } catch (IOException e) {
                             System.err.println("Archivo no existe" + e);
                         }
 
@@ -258,6 +291,7 @@ public class Planificador {
                             es = new PrintWriter(est, "utf-8");
                             es.println(lineaestudiante);
                             es.close();
+                            System.out.println("Estudiante creado");
                         } catch (IOException e) {
                             System.err.println(e);
                         }
@@ -265,7 +299,11 @@ public class Planificador {
                     } else {
                         try {
                             est.createNewFile();
-                        } catch (Exception e) {
+                            es = new PrintWriter(est, "utf-8");
+                            es.println(lineaestudiante);
+                            System.out.println("Estudiante creado");
+                            es.close();
+                        } catch (IOException e) {
                             System.err.println("Archivo no existe" + e);
                         }
 
@@ -294,36 +332,11 @@ public class Planificador {
                     } else {
                         try {
                             est.createNewFile();
-                        } catch (Exception e) {
-                            System.err.println("Archivo no existe" + e);
-                        }
-
-                    }
-                } else {
-                    System.out.println("Estudiante no creado");
-                }
-                //DEBERIA GUARDARSE EN TXT  
-            } else if (opcionbruja == 3) {
-                checkdigit = 0;
-                Estudiante estn = new Estudiante(nombreest, apellidoest, edadest, casaest, varitaest, Tipo_Mago.Normal);
-                String lineaestudiante = estn.Nombres + "," + estn.Apellidos + "," + estn.Edad + "," + estn.Varita + "," + "N";
-                System.out.println("Desea guardar datos? 1/0: ");
-                int opsave = sc.nextInt();
-                if (opsave == 1) {
-                    if (est.exists()) {
-                        try {
                             es = new PrintWriter(est, "utf-8");
                             es.println(lineaestudiante);
                             System.out.println("Estudiante creado");
                             es.close();
                         } catch (IOException e) {
-                            System.err.println(e);
-                        }
-
-                    } else {
-                        try {
-                            est.createNewFile();
-                        } catch (Exception e) {
                             System.err.println("Archivo no existe" + e);
                         }
 
@@ -332,6 +345,9 @@ public class Planificador {
                     System.out.println("Estudiante no creado");
                 }
                 //DEBERIA GUARDARSE EN TXT  
+            } else if ((opcionbruja > 3) || (opcionbruja < 1)){
+                checkdigit = -1;
+                System.out.println("Selección erronea");
 
             }
         }
