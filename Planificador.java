@@ -1,10 +1,8 @@
 package proyecto;
 
 //Importando los paquetes util e io
-import java.io.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.*;
 
 public class Planificador {
     
@@ -39,52 +37,7 @@ public class Planificador {
         return Contraseña;
     }
 
-    public void Login() {
-        Scanner sc = new Scanner(System.in);
-        String usernom = "", userapell = "", userrol = "";
-        int checknum = -1;
-        
-        while (checknum == -1) {
-            System.out.println("Usuario");
-            String usuario = sc.nextLine();
-            System.out.println("Contraseña");
-            String password = sc.nextLine();
-            File archivo = null;
-            FileReader fr = null;
-            BufferedReader br = null;
-            try {
-                InputStream inputstream = Planificador.class.getResourceAsStream("/resources/Usuarios.txt");
-                InputStreamReader inputreader = new InputStreamReader(inputstream);
-                br = new BufferedReader(inputreader);
-                String linea;
-                while ((linea = br.readLine()) != null) {
-                    String texto[] = linea.split(",");
-                    if (texto[0].equalsIgnoreCase(usuario) && texto[1].equalsIgnoreCase(password)) {
-                        checknum= 0;
-                        usernom = texto[2];
-                        userapell = texto[3];
-                        userrol = texto[4];
-                    }
-                }
-            } catch (IOException e) {
-               System.err.println(e);
-
-            } finally {
-                try {
-                    if (null != fr) {
-                        fr.close();
-                    }
-                } catch (IOException e2) {
-                    System.err.println(e2);
-                }
-            }
-            if (checknum == -1) {
-                System.out.println("Los datos no son válidos.Intente nuevamente.");
-                } else {
-                System.out.println("Ingrese exitoso");
-            }
-        }
-    }
+    
     public void EscribirArchivo(File f, String l){
         if (f.exists()) {
                         try {
@@ -330,8 +283,8 @@ public class Planificador {
                 System.out.println("Hechizo:");
                 String tipohechizo = sc.nextLine();
                 Profesor profea = new Profesor(nombreprof, apellidoprof, edadprof, casaprof, varitaprof, Tipo_Mago.Animago, fechaprof, tipohechizo, tipoanimal, "null", "null");
-                String lineaprofesor = profea.Nombres + "," + profea.Apellidos + "," + profea.Edad + "," + profea.Varita + "," + profea.getIngreso() + "," + "A" + "," + profea.getAnimal()+","+
-                         profea.getHechizo() + ","+profea.getPocion() + "," + profea.getDeporte();
+                String lineaprofesor = profea.getNombres() + "," + profea.getApellidos() + "," + profea.getEdad() + "," + profea.getVarita() + "," + profea.getIngreso() + "," + "A" + "," + profea.getAnimal()
+                        + "," + profea.getHechizo() + "," + profea.getPocion() + "," + profea.getDeporte() + "\n";
                 System.out.println("Desea guardar datos? 1/0: ");
                 int opsave = sc.nextInt();
                 if (opsave == 1) {
@@ -340,15 +293,15 @@ public class Planificador {
                 }else {
                     System.out.println("Profesor no creado");
                 }
-                //DEBERIA GUARDARSE EN TXT
+                
 
             } else if (opcionbruja == 2) {
                 checkdigit = 0;
                 System.out.println("Poción:");
                 String tipopocion = sc.nextLine();
                 Profesor profem = new Profesor(nombreprof, apellidoprof, edadprof, casaprof, varitaprof, Tipo_Mago.Metamorfomago, fechaprof, "null", "null", tipopocion, "null");
-                String lineaprofesor = profem.Nombres + "," + profem.Apellidos + "," + profem.Edad + "," + profem.Varita + "," + profem.getIngreso() + "," + "M" + "," + profem.getAnimal()
-                        + profem.getHechizo() + profem.getPocion() + "," + profem.getDeporte();
+                String lineaprofesor = profem.getNombres() + "," + profem.getApellidos() + "," + profem.getEdad() + "," + profem.getVarita() + "," + profem.getIngreso() + "," + "M" + "," + profem.getAnimal()
+                        + "," + profem.getHechizo() + "," + profem.getPocion() + "," + profem.getDeporte() + "\n";
                 System.out.println("Desea guardar datos? 1/0: ");
                 int opsave = sc.nextInt();
                 if (opsave == 1) {
@@ -364,8 +317,8 @@ public class Planificador {
                 System.out.println("Deporte: ");
                 String deporte = sc.nextLine();
                 Profesor profen = new Profesor(nombreprof, apellidoprof, edadprof, casaprof, varitaprof, Tipo_Mago.Normal, fechaprof, "null", "null", "null", deporte);
-                String lineaprofesor = profen.Nombres + "," + profen.Apellidos + "," + profen.Edad + "," + profen.Varita + "," + profen.getIngreso() + "," + "N" + "," + profen.getAnimal()
-                        + profen.getHechizo() + profen.getPocion() + "," + profen.getDeporte();
+                String lineaprofesor = profen.getNombres() + "," + profen.getApellidos() + "," + profen.getEdad() + "," + profen.getVarita() + "," + profen.getIngreso() + "," + "N" + "," + profen.getAnimal()
+                        + "," + profen.getHechizo() + "," + profen.getPocion() + "," + profen.getDeporte() + "\n";
                 System.out.println("Desea guardar datos? 1/0: ");
                 int opsave = sc.nextInt();
                 if (opsave == 1) {
@@ -375,7 +328,7 @@ public class Planificador {
                 }else {
                     System.out.println("Profesor no creado");
                 }
-                //DEBERIA GUARDARSE EN TXT                
+                               
             }else if ((opcionbruja > 3) || (opcionbruja < 1)){
                 checkdigit = -1;
                 System.out.println("Selección erronea");
@@ -410,7 +363,7 @@ public class Planificador {
             if (opcionbruja == 1) {
                 checkdigit = 0;
                 Estudiante esta = new Estudiante(nombreest, apellidoest, edadest, casaest, varitaest, Tipo_Mago.Animago);
-                String lineaestudiante = esta.Nombres + "," + esta.Apellidos + "," + esta.Edad + "," + esta.Varita + "," + "A";
+                String lineaestudiante = "\n"+esta.getNombres() + "," + esta.getApellidos() + "," + esta.getEdad() + "," + esta.getVarita() + "," + esta.getCasa() + "," + "A";
                 System.out.println("Desea guardar datos? 1/0: ");
                 int opsave = sc.nextInt();
                 if (opsave == 1) {
@@ -423,7 +376,7 @@ public class Planificador {
             } else if (opcionbruja == 2) {
                 checkdigit = 0;
                 Estudiante estm = new Estudiante(nombreest, apellidoest, edadest, casaest, varitaest, Tipo_Mago.Metamorfomago);
-                String lineaestudiante = estm.Nombres + "," + estm.Apellidos + "," + estm.Edad + "," + estm.Varita + "," + "M";
+                String lineaestudiante = "\n"+estm.Nombres + "," + estm.Apellidos + "," + estm.Edad + "," + estm.Varita + "," + "M";
                 System.out.println("Desea guardar datos? 1/0: ");
                 int opsave = sc.nextInt();
                 if (opsave == 1) {
@@ -436,7 +389,7 @@ public class Planificador {
             } else if (opcionbruja == 3) {
                 checkdigit = 0;
                 Estudiante estn = new Estudiante(nombreest, apellidoest, edadest, casaest, varitaest, Tipo_Mago.Normal);
-                String lineaestudiante = estn.Nombres + "," + estn.Apellidos + "," + estn.Edad + "," + estn.Varita + "," + "N";
+                String lineaestudiante = "\n"+estn.Nombres + "," + estn.Apellidos + "," + estn.Edad + "," + estn.Varita + "," + "N";
                 System.out.println("Desea guardar datos? 1/0: ");
                 int opsave = sc.nextInt();
                 if (opsave == 1) {
@@ -445,11 +398,10 @@ public class Planificador {
                 } else {
                     System.out.println("Estudiante no creado");
                 }
-                //DEBERIA GUARDARSE EN TXT  
+                  
             } else if ((opcionbruja > 3) || (opcionbruja < 1)){
                 checkdigit = -1;
                 System.out.println("Selección erronea");
-
             }
         }
     }
