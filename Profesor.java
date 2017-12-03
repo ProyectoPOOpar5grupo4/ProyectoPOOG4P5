@@ -1,18 +1,22 @@
 package proyecto;
 
+//importando el paquete java.util
 import java.util.*;
 
 /**
  * 
  */
-public class Profesor extends Mago implements Volador {
 
+//Herencia de la clase mago e Implementando la interface Volador
+public class Profesor extends Mago implements Volador {
+    //Declaracion de los atributos 
     private String FIngreso;
     private String Hechizo;
     private String Animal;
     private String Pocion;
     private String Deporte;
-
+    
+    //Declaracion de los métodos
     public Profesor(String Nombres,String Apellidos, int Edad, String Casa,
     String Varita, Tipo_Mago Tipo,String FIngreso,String Hechizo,String Animal,String Pocion,String Deporte) {
 
@@ -23,7 +27,8 @@ public class Profesor extends Mago implements Volador {
         this.Pocion=Pocion;
         this.Hechizo=Hechizo;
     }
-
+    
+    //Métodos get and set de los atributos
     public void setIngreso(String FIngreso) {
         this.FIngreso=FIngreso;
     }
@@ -68,7 +73,8 @@ public class Profesor extends Mago implements Volador {
         // TODO implement here
         return Pocion;
     }
-
+    
+    //Implementando los métodos de la interface Volador
     @Override
     public void Despegar() {
     
