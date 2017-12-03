@@ -3,6 +3,14 @@ package proyecto;
 
 
 import java.util.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.InputStreamReader;
+import java.util.Scanner;
 
 /**
  * 
@@ -15,6 +23,11 @@ public class Estudiante extends Mago implements Volador {
         super(Nombres, Apellidos, Edad, Casa, Varita, Tipo);
         MateriasReg=0;
     }
+    public Estudiante(String Nombres, String Apellidos) {
+        super(Nombres, Apellidos);
+
+    }
+
     
     public void setNumMateria( int MateriasReg) {
         this.MateriasReg=MateriasReg;
@@ -23,6 +36,9 @@ public class Estudiante extends Mago implements Volador {
     public int getNumMateria() {
         
         return MateriasReg;
+    }
+    public String getCasa() {
+        return Casa;
     }
 
     public void Registro( int Edad) {
@@ -55,10 +71,10 @@ public class Estudiante extends Mago implements Volador {
             }}
         }
     @Override
-	public String toString() {
-	String d= Nombres+ " -- "+Apellidos+ " -- "+ Edad+ " -- "+ Casa+ " -- "+ MateriasReg;
-            return d;
-	}
+    public String toString() {
+        String mensaje = "Nombre: " + this.Nombres + "\n" + "Apellidos: " + this.Apellidos + "\n" + "Edad: " + this.Edad + "\n" + "Varita: " + this.Varita + "\n" + "Tipo de mago: " + this.Tipo + "\n";
+        return mensaje;
+    }
    
     @Override
     public void Despegar() {
@@ -66,7 +82,29 @@ public class Estudiante extends Mago implements Volador {
     }
 
     @Override
-    public void Volar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void Volar(String nombres, String apellidos) {
+        String line;
+        try {
+            FileReader fr = new FileReader("Estudiantes.txt");
+            try (BufferedReader br = new BufferedReader(fr)) {
+                while ((line = br.readLine()) != null) {
+                    String lineaest[] = line.split(",");
+                    if (lineaest[0].equalsIgnoreCase(nombres) && lineaest[1].equalsIgnoreCase(apellidos)) {
+                        if (lineaest[5].equalsIgnoreCase("A")) {
+                            System.out.println("Usted es un animago, para volar usted necesia su varita de " + lineaest[3]);
+                        } else if (lineaest[5].equalsIgnoreCase("M")) {
+                            System.out.println("Usted es un metamorfomago, usted puede volar usando su poder,sin varita ni escoba.");
+                        } else if (lineaest[5].equalsIgnoreCase("N")) {
+                            System.out.println("Usted es un mago normal, para volar necesita una nimbus 2000.");
+                        } else {
+                            System.out.println("No existe el alumno.");
+                        }
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
             }
