@@ -9,6 +9,7 @@ package proyecto;
  *
  * @author Pc
  */
+//Clase Especial enum ListadoMaterias
 public enum ListadoMaterias {
     Pociones(1,"Pociones"),
     Artes(2,"Defensa Contra las Artes Oscuras"),
@@ -19,13 +20,17 @@ public enum ListadoMaterias {
     Encantamiento(7,"Encantamientos"),
     Vuelo(8,"Vuelo");
     
+	//Declaracion de atributos
     private final int num;
     private final String materia;
     
+	//Método ListadoMaterias
     private ListadoMaterias(int num, String materia) {
         this.num = num;
         this.materia = materia;
     }
+	
+	//Declaracion de los get and set de los atributos 
     public String getMateria() {
 		return materia;
 	}
@@ -33,6 +38,8 @@ public enum ListadoMaterias {
     public int getNumero() {
             return num;
     }	
+	
+	//Sobreescribiendo el método toString
     @Override
     public String toString(){
     return num+"."+" "+materia;
