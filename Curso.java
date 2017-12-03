@@ -57,11 +57,7 @@ public class Curso {
     }
     
     public boolean esExtraordionario(int edad) {
-        if (edad <= 15) {
-            return true;
-        } else {
-            return false;
-        }
+        return edad <=15;
 
     }
 
