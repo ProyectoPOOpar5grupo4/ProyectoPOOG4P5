@@ -12,8 +12,9 @@ package proyecto;
 public class Proyecto {
 
     public static void main(String[] args) {
-        
+    //Declaracion de variables    
     Planificador p=new Planificador();
+    //Creando curso 
     p.CrearCurso();
 }
 }
