@@ -5,15 +5,12 @@ package proyecto;
  * 
  */
 public class Curso {
-    
-    //Declaracion de los atributos
     private int Capacidad;
     private String NombreMateria;
     private String NombreProfesor;
     private String Hora;
     private String Dia;
     
-    //Declaracion de los metodos de la clase Curso
      public Curso(int Capacidad,String NombreMateria, String NombreProfesor,String Hora,String Dia) {
          this.Capacidad=Capacidad;
          this.NombreMateria=NombreMateria;
@@ -21,12 +18,11 @@ public class Curso {
          this.Dia=Dia;
          this.Hora=Hora;
     }
-    
-    //Métodos get and set de los atributos de la clase Curso
+     
     public void setCapacidad(int Capacidad) {
         this.Capacidad=Capacidad;
     }
-    
+
     public void setMateria(String Materia) {
         NombreMateria=Materia;
     }
@@ -34,11 +30,10 @@ public class Curso {
     public void setProfesor(String Profesor) {
         NombreProfesor=Profesor;
     }
-    
     public void setDia(String Dia) {
         this.Dia=Dia;
     }
-     
+
     public void setHora(String Hora) {
        this.Hora=Hora;
     }
@@ -61,9 +56,12 @@ public class Curso {
         return Hora;
     }
     
-    //Método boolean esExtraordinario
     public boolean esExtraordionario(int edad) {
-        return edad <=15;
+        if (edad <= 15) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 

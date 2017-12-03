@@ -1,24 +1,21 @@
 package proyecto;
 
 
-//Importacion del paquete java.util
+
 import java.util.*;
 
 /**
  * 
  */
-//Herencia de la clase Mago e implementando la interface Volador
 public class Estudiante extends Mago implements Volador {
-    //Declaración de atributos
     private int MateriasReg;
     
-    //Declaración de los métodos
+    
     public Estudiante(String Nombres, String Apellidos, int Edad, String Casa, String Varita, Tipo_Mago Tipo) {
         super(Nombres, Apellidos, Edad, Casa, Varita, Tipo);
-        //Inicializacion del atributo MateriasReg
         MateriasReg=0;
     }
-    //Métodos get an set de la clase Estudiante
+    
     public void setNumMateria( int MateriasReg) {
         this.MateriasReg=MateriasReg;
     }
@@ -31,20 +28,38 @@ public class Estudiante extends Mago implements Volador {
     public void Registro( int Edad) {
        this.Edad=Edad;
     }
-    //método VerHorarios
-    public String VerHorarios() {
-        String materia = "";
-        Scanner sub = new Scanner(System.in);
-        System.out.println("/** CURSOS PLANIFICADOS **/ ");
-        for (ListadoMaterias subject : ListadoMaterias.values()) {
-            System.out.println(subject.toString());
-        }
-        System.out.println("Escoja una materia: ");
-        int k = sub.nextInt();
-        return null;
+
+    public void VerHorarios() {
+        Planificador p=new Planificador();
+        Scanner sc = new Scanner(System.in);
+        String NomMateria = "";
+        int i=0,a=0;
+            System.out.println("/** MATERIAS **/");
+            for (ListadoMaterias d : ListadoMaterias.values()) {
+                System.out.println(d.toString());
+            }
+            System.out.println("Elija una materia del listado de materias: ");
+            int numMateria = sc.nextInt();
+            for (ListadoMaterias d : ListadoMaterias.values()) {
+                if (numMateria == d.getNumero()) {
+                    NomMateria = d.getMateria();
+                    System.out.println("Materia1 " + NomMateria);
+                }for (i=0; i<p.leercurso().size(); i++){
+                Curso v1 = (Curso) p.leercurso().get(i);   
+                    if( NomMateria.equals(v1.getMateria())){
+               System.out.println("Materia " + v1.getMateria());
+                        System.out.println("Profesor " + v1.getProfesor());
+                        System.out.println("Horario " + v1.getDia() + " " + v1.getHora());
+                        System.out.println("Registrados " + v1.getCapacidad());}
         
-    }
-    //Implementando los métodos de la interface Volador
+            }}
+        }
+    @Override
+	public String toString() {
+	String d= Nombres+ " -- "+Apellidos+ " -- "+ Edad+ " -- "+ Casa+ " -- "+ MateriasReg;
+            return d;
+	}
+   
     @Override
     public void Despegar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
