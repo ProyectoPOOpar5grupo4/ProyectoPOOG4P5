@@ -3,13 +3,7 @@ package proyecto;
 
 
 import java.util.*;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -66,13 +60,13 @@ public class Estudiante extends Mago implements Volador {
                System.out.println("Materia " + v1.getMateria());
                         System.out.println("Profesor " + v1.getProfesor());
                         System.out.println("Horario " + v1.getDia() + " " + v1.getHora());
-                        System.out.println("Registrados " + v1.getCapacidad());}
+                        }
         
             }}
         }
     @Override
     public String toString() {
-        String mensaje = "Nombre: " + this.Nombres + "\n" + "Apellidos: " + this.Apellidos + "\n" + "Edad: " + this.Edad + "\n" + "Varita: " + this.Varita + "\n" + "Tipo de mago: " + this.Tipo + "\n";
+        String mensaje = "Nombre: " + this.Nombres + " " + "Apellidos: " + this.Apellidos + " " + "Edad: " + this.Edad + " " + "Casa: " + this.Casa + " " + "Materias Registradas: " + this.MateriasReg + "\n";
         return mensaje;
     }
    
