@@ -5,8 +5,6 @@
  */
 package proyecto;
 
-import java.io.*;
-
 /**
  *
  * @author Pc
@@ -14,11 +12,8 @@ import java.io.*;
 public class Proyecto {
 
     public static void main(String[] args) {
-        File f =new File("estudiantes.txt");
-        PrintWriter es;
         
     Planificador p=new Planificador();
-    
-    p.CrearEstudiante();
+    p.CrearCurso();
 }
 }

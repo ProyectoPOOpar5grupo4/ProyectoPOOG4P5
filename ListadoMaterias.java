@@ -26,7 +26,13 @@ public enum ListadoMaterias {
         this.num = num;
         this.materia = materia;
     }
-    
+    public String getMateria() {
+		return materia;
+	}
+
+    public int getNumero() {
+            return num;
+    }	
     @Override
     public String toString(){
     return num+"."+" "+materia;

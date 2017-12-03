@@ -1,8 +1,7 @@
 package proyecto;
 
 
-import java.io.File;
-import java.io.PrintWriter;
+
 import java.util.*;
 
 /**
@@ -17,11 +16,11 @@ public class Estudiante extends Mago implements Volador {
         MateriasReg=0;
     }
     
-    public void setMateria( int MateriasReg) {
+    public void setNumMateria( int MateriasReg) {
         this.MateriasReg=MateriasReg;
     }
 
-    public int getMateria() {
+    public int getNumMateria() {
         
         return MateriasReg;
     }
