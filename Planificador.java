@@ -36,6 +36,101 @@ public class Planificador {
         // TODO implement here
         return Contraseña;
     }
+	
+    public ArrayList leermago(File f,String l) {
+        String nombre, apellido, casa, varita, tMago;
+        int edad;
+        ArrayList<Mago> p = new ArrayList<>();
+        FileReader fr1 = null;
+        File archivo = null;
+        String cadena = "";
+        
+        if(l.equalsIgnoreCase("estudiantes.txt")){
+            try {
+                archivo=new File(l);
+                fr1 = new FileReader(archivo);
+            BufferedReader br = new BufferedReader(fr1);
+            while (cadena != null) {
+                try {
+                    cadena = br.readLine();
+                    if (cadena != null) {
+                        String texto[] = cadena.split(",");
+                        nombre = texto[0];
+                        apellido = texto[1];
+                        edad = Integer.parseInt(texto[2]);
+                        casa = texto[3];
+                        varita = texto[4];
+                        tMago = texto[5];
+                        if(tMago.equalsIgnoreCase("A")){
+                            tMago="Animago";
+                            }else if(tMago.equalsIgnoreCase("N")){
+                                tMago="Normal";
+                            }else if(tMago.equalsIgnoreCase("M")){
+                                tMago="Metamorfomago";
+                            }
+                        Tipo_Mago tipo = Tipo_Mago.valueOf(tMago);
+                        p.add(new Estudiante(nombre, apellido, edad, casa, varita, tipo));
+                       
+                    }
+                } catch (IOException e) {
+                    System.err.println(e);
+                }
+            }
+            try {
+                br.close();
+                fr1.close();
+            } catch (IOException e) {
+                System.out.println(e);
+            } 
+        catch (Exception e) {
+            System.err.println(e);}
+            } catch (FileNotFoundException ex) {
+                System.out.println(ex);
+            }
+            }else{
+            try {
+                archivo=new File(l);
+                fr1 = new FileReader(archivo);
+            BufferedReader br = new BufferedReader(fr1);
+            while (cadena != null) {
+                try {
+                    cadena = br.readLine();
+                    if (cadena != null) {
+                        String texto[] = cadena.split(",");
+                        nombre = texto[0];
+                        apellido = texto[1];
+                        edad = Integer.parseInt(texto[2]);
+                        casa = texto[3];
+                        varita = texto[4];
+                        tMago = texto[5];
+                        if(tMago.equalsIgnoreCase("A")){
+                            tMago="Animago";
+                            }else if(tMago.equalsIgnoreCase("N")){
+                                tMago="Normal";
+                            }else if(tMago.equalsIgnoreCase("M")){
+                                tMago="Metamorfomago";
+                            }
+                        Tipo_Mago tipo = Tipo_Mago.valueOf(tMago);
+                        p.add(new Mago(nombre, apellido, edad, casa, varita, tipo));
+                        }
+                } catch (IOException e) {
+                    System.err.println(e);
+                }
+            }
+            try {
+                br.close();
+                fr1.close();
+            } catch (IOException e) {
+                System.out.println(e);
+            } 
+        catch (Exception e) {
+            System.err.println(e);}
+            } catch (FileNotFoundException ex) {
+                System.out.println(ex);
+            }
+            }
+        return p;
+        }	
 
     
     public void EscribirArchivo(File f, String l){
@@ -136,6 +231,7 @@ public class Planificador {
             System.err.println(e);
         }
         return p;}
+	
     public void CrearCurso() {
         File curso = new File("curso.txt");
         String NomMateria="";
@@ -405,43 +501,79 @@ public class Planificador {
             }
         }
     }
-static Scanner sc = new Scanner(System.in);
-    public static void VerHorariosPlanificados() {
-	   int pos = -1;
-        while (!(pos != -1)) {
+
+    public void VerHorariosPlanificados(String userrol) {
+	    Scanner sc = new Scanner(System.in);
+        String NomMateria = "";
+        int i=0,a=0;
+            System.out.println("/** MATERIAS **/");
             for (ListadoMaterias d : ListadoMaterias.values()) {
                 System.out.println(d.toString());
             }
-            System.out.print("Elija una de las materias del listado de materias: ");
-            int op = sc.nextInt();
-            if (op == 1 || op == 2 || op == 3 || op == 4 || op == 5 || op == 6 || op == 7 || op == 8) {
-                int index = op - 1;
-                String materia = Cursos.setListaMaterias().get(index);
-                int registrados = Cursos.getRegistrados();
-                pos = Planificador.arrayListaCursos().get(0).indexOf(materia);                
-                if (pos != -1) {                    
-                    System.out.println("\nMATERIA: " + materia);
-                    System.out.println("PROFESOR: " + Planificador.arrayListaCursos().get(4).get(pos));
-                    System.out.println("HORARIO: " + Planificador.arrayListaCursos().get(2).get(pos) + ", " + Planificador.arrayListaCursos().get(1).get(pos));
-		    System.out.println("REGISTRADOS: "+ Planificador.arrayListaCursos().get(3).get(pos));
+            System.out.println("Elija una materia del listado de materias: ");
+            int numMateria = sc.nextInt();
+            for (ListadoMaterias d : ListadoMaterias.values()) {
+                if (numMateria == d.getNumero()) {
+                    NomMateria = d.getMateria();
+                }for (i=0; i<leercurso().size(); i++){
+                    Curso v1 = (Curso) leercurso().get(i);   
+                    if( NomMateria.equals(v1.getMateria())){
+                    System.out.println("Materia " + v1.getMateria());
+                    System.out.println("Profesor " + v1.getProfesor());
+                    System.out.println("Horario " + v1.getDia() + " " + v1.getHora());
+                    if( userrol.equalsIgnoreCase( "planificador")){
+                    System.out.println("Registrados " + v1.getRegistrados());}
+                    }}
+            }}
 
-                } else {
-                    System.out.print("No se ha creado un curso con la materia " );
-                    String confirmar = sc.next();                 
-                }
 
-            } else {
-                System.out.print("Opción incorrecta");
-
-            }
-
-        } 
-
-       
-    }
-
-    public ArrayList VerListadoEstudiantes() {
-        // TODO implement here
-        return null;
-    }
+    public void VerListadoEstudiantes() {
+        Scanner sc =new Scanner (System.in);
+        ArrayList<Estudiante> est=leermago(estudiante,"estudiantes.txt");
+        
+        int checkdigit = -1;
+        while (checkdigit == -1) {
+            System.out.println("Listado de estudiante");
+            System.out.println("1.- Edad");
+            System.out.println("2.- Nombre");
+            System.out.println("3.- Número de materias registradas");
+            System.out.println("Escoja el tipo de ordenamiento:");
+            int opcion = sc.nextInt();
+            if (opcion ==1){
+                checkdigit = 0;
+              Comparator<Estudiante> comparador =  new Comparator<Estudiante>() {
+                @Override
+                public int compare(Estudiante a, Estudiante b) {
+                    int resultado = Integer.compare( a.Edad, b.Edad);
+                 return resultado; }
+                                        
+        };
+                Collections.sort(est,  comparador );
+        System.out.printf( "Estudiantes: "+ est );
+            } else if (opcion ==2){
+                checkdigit = 0;
+              Comparator<Estudiante> comparador =  new Comparator<Estudiante>() {
+                @Override
+                public int compare(Estudiante a, Estudiante b) {
+                    int resultado = a.Apellidos.compareTo(b.Apellidos);
+                if ( resultado != 0 ) { return resultado; };
+                    resultado = a.Nombres.compareTo(b.Nombres);
+                return resultado; }
+                                        
+        };
+                Collections.sort(est,  comparador );
+                System.out.printf( "Estudiantes: %s%n", est );
+            }else if (opcion ==3){
+              Comparator<Estudiante> comparador =  new Comparator<Estudiante>() {
+                @Override
+                public int compare(Estudiante a, Estudiante b) {
+                int resultado = Integer.compare( a.getNumMateria(), b.getNumMateria());
+                return resultado; }   
+        };
+                Collections.sort(est,  comparador );
+        System.out.printf( "Estudiantes: %s%n", est );
+            }     
+                          
+}
+}
 }
