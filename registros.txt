@@ -1,0 +1,6 @@
+3/12/2017,Harry,Potter,Pociones
+3/12/2017,Harry,Potter,Pociones,N
+3/12/2017,Harry,Potter,Defensa Contra las Artes Oscuras,N
+3/12/2017,Harry,Potter,Pociones,N
+3/12/2017,Harry,Potter,Pociones,N
+3/12/2017,Harry,Potter,Adivinación,N
