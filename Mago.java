@@ -30,6 +30,11 @@ public class Mago {
         this.Varita = Varita;
         this.Tipo = Tipo;
     }
+    
+    public Mago(String Nombres, String Apellidos) {
+        this.Nombres = Nombres;
+        this.Apellidos = Apellidos;
+    }
      
     public static String[] Login() {
         Scanner sc = new Scanner(System.in);
