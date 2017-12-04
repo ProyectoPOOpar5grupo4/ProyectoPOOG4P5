@@ -5,6 +5,6 @@ public interface Volador {
 
  
     public void Despegar();
-    public void Volar();
+    public void Volar(String nombre,String apell);
 
 }
