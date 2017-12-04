@@ -4,7 +4,7 @@ package proyecto;
  *
  * @author Pc
  */
-public class Proyecto {
+public class SistemaHogwarts {
 
     public static void main(String[] args) {
     System.out.println("\nBIENVENIDO AL SISTEMA\n");
@@ -36,7 +36,7 @@ public class Proyecto {
                     planner.VerHorariosPlanificados(userrol);
 
                 } else if (subopcion == 5) {
-                    //planner.VerListado();
+                    planner.VerListadoEstudiantes();
 
                 } else if (subopcion == 6) {
                     Mago.logOut();
