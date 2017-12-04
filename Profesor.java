@@ -75,8 +75,8 @@ public class Profesor extends Mago implements Volador {
     }
 
     @Override
-    public void Volar() {
-    
+    public void Volar(String nombre,String apellido) {
+
     }
 
 }
