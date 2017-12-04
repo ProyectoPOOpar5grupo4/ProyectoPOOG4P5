@@ -405,10 +405,39 @@ public class Planificador {
             }
         }
     }
+static Scanner sc = new Scanner(System.in);
+    public static void VerHorariosPlanificados() {
+	   int pos = -1;
+        while (!(pos != -1)) {
+            for (ListadoMaterias d : ListadoMaterias.values()) {
+                System.out.println(d.toString());
+            }
+            System.out.print("Elija una de las materias del listado de materias: ");
+            int op = sc.nextInt();
+            if (op == 1 || op == 2 || op == 3 || op == 4 || op == 5 || op == 6 || op == 7 || op == 8) {
+                int index = op - 1;
+                String materia = Cursos.setListaMaterias().get(index);
+                int registrados = Cursos.getRegistrados();
+                pos = Planificador.arrayListaCursos().get(0).indexOf(materia);                
+                if (pos != -1) {                    
+                    System.out.println("\nMATERIA: " + materia);
+                    System.out.println("PROFESOR: " + Planificador.arrayListaCursos().get(4).get(pos));
+                    System.out.println("HORARIO: " + Planificador.arrayListaCursos().get(2).get(pos) + ", " + Planificador.arrayListaCursos().get(1).get(pos));
+		    System.out.println("REGISTRADOS: "+ Planificador.arrayListaCursos().get(3).get(pos));
 
-    public String VerHorariosPlanificados(String Materia) {
+                } else {
+                    System.out.print("No se ha creado un curso con la materia " );
+                    String confirmar = sc.next();                 
+                }
 
-        return "";
+            } else {
+                System.out.print("Opción incorrecta");
+
+            }
+
+        } 
+
+       
     }
 
     public ArrayList VerListadoEstudiantes() {
